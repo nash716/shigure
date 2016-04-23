@@ -67,7 +67,7 @@ const recorded = (curr, prev) => {
 		}
 
 		_.forEach(config.target, (target) => {
-			const pattern = new RegExp(target, 'g');
+			const pattern = new RegExp(target, 'i');
 
 			if (recorded.title.match(pattern)) {
 				data.encoding.push({
