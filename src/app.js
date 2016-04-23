@@ -4,6 +4,7 @@ import fs from 'fs';
 import { EventEmitter } from 'events';
 
 global.load = (path) => fs.readFileSync(path).toString();
+global.save = (path, content) => fs.writeFileSync(path, content);
 
 global.dispatcher = new EventEmitter();
 
