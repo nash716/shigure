@@ -1,4 +1,4 @@
 {
 	"chinachu": "/home/chinachu/Chinachu/data",
-	"encode": [ ".*" ]
+	"target": [ ".*" ]
 }
