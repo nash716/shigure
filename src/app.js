@@ -4,6 +4,7 @@ import handlers from './handlers';
 global.load = (path) => fs.readFileSync(path).toString();
 
 global.config = JSON.parse(load(__dirname + '/../data/config.json'));
+global.config = JSON.parse(load(`${__dirname}/../data/config.json`));
 
 global.paths = {
 	recorded: `${config.chinachu}/recorded.json`,
