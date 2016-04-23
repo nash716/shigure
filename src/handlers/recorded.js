@@ -61,7 +61,7 @@ const recorded = (curr, prev) => {
 		let flag = false;
 
 		if (_.find(data.encoded, { chinachu: recorded })) {
-			log('already encoded, skip');
+			//log('already encoded, skip');
 
 			return;
 		}
