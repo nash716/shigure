@@ -8,6 +8,7 @@ data.encoded = JSON.parse(load(paths.encoded));
 data.encoding = JSON.parse(load(paths.encoding));
 
 const format = (f, p) => {
+	p = path.resolve(config.chinachu, '../', p);
 	const basename = path.basename(p, '.m2ts');
 	const basedir = path.dirname(p);
 
@@ -20,9 +21,11 @@ const encode = () => {
 			return;
 		}
 
-		const proc = cp.spawn(config.script, [ encoding.chinachu.recorded, encoding.encoded ], { cwd: path.resolve(__dirname, '../../lib') });
+		const input = path.resolve(config.chinachu, '../', encoding.chinachu.recorded);
 
-		log(`encoding start: pid = ${proc.pid}, input = ${encoding.chinachu.recorded}, output = ${encoding.encoded}`);
+		const proc = cp.spawn(config.script, [ input, encoding.encoded ], { cwd: path.resolve(__dirname, '../../lib') });
+
+		log(`encoding start: pid = ${proc.pid}, input = ${input}, output = ${encoding.encoded}`);
 
 		proc.on('close', (code) => {
 			log(`encoding end: pid = ${proc.pid}, exit code = ${code}`);
