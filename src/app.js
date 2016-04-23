@@ -13,7 +13,9 @@ global.config = JSON.parse(load(configPath));
 
 global.paths = {
 	recorded: `${config.chinachu}/recorded.json`,
-	recording: `${config.chinachu}/recording.json`
+	recording: `${config.chinachu}/recording.json`,
+	encoded: `${__dirname}/../data/encoded.json`,
+	encoding: `${__dirname}/../data/encoding.json`
 };
 
 fs.watchFile(configPath, (curr, prev) => {
