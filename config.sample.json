@@ -1,4 +1,6 @@
 {
 	"chinachu": "/home/chinachu/Chinachu/data",
-	"target": [ ".*" ]
+	"target": [ ".*" ],
+	"script": "./encode.sh",
+	"output": "{basedir}/{basename}.mp4"
 }

@@ -36,3 +36,4 @@ const handlers = require('./handlers')['default'];
 
 fs.watchFile(paths.recorded, handlers.recorded);
 fs.watchFile(paths.recording, handlers.recording);
+dispatcher.on('encode-end', handlers.recorded);

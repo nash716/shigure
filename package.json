@@ -13,7 +13,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "mkdir -p lib && mkdir -p data",
-    "easy-install": "npm run prepare && cp config.sample.json data/config.json && echo '[ ]' > data/encoded.json && echo '[ ]' > data/encoding.json && npm run build",
+    "easy-install": "npm run prepare && cp config.sample.json data/config.json && cp encode.sample.sh lib/encode.sh && chmod +x lib/encode.sh && echo '[ ]' > data/encoded.json && echo '[ ]' > data/encoding.json && npm run build",
     "build": "browserify --bare -t [ babelify --presets es2015 ] src/app.js -o lib/shigure"
   },
   "author": "nash <preflight.cc@gmail.com>",
