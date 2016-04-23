@@ -6,12 +6,19 @@ import { EventEmitter } from 'events';
 global.load = (path) => fs.readFileSync(path).toString();
 
 global.dispatcher = new EventEmitter();
-global.config = JSON.parse(load(`${__dirname}/../data/config.json`));
+
+const configPath = `${__dirname}/../data/config.json`;
+
+global.config = JSON.parse(load(configPath));
 
 global.paths = {
 	recorded: `${config.chinachu}/recorded.json`,
 	recording: `${config.chinachu}/recording.json`
 };
+
+fs.watchFile(configPath, (curr, prev) => {
+	global.config = JSON.parse(load(configPath));
+});
 
 // register handlers
 
