@@ -16,12 +16,17 @@ global.paths = {
 	recorded: `${config.chinachu}/recorded.json`,
 	recording: `${config.chinachu}/recording.json`,
 	encoded: `${__dirname}/../data/encoded.json`,
-	encoding: `${__dirname}/../data/encoding.json`
+	encoding: `${__dirname}/../data/encoding.json`,
+	log: `${__dirname}/../shigure.log`
 };
+
+global.log = (str) => fs.appendFileSync(paths.log, `[${new Date()}] ${str}\n`);
 
 fs.watchFile(configPath, (curr, prev) => {
 	global.config = JSON.parse(load(configPath));
 });
+
+log('shigure has started.');
 
 // register handlers
 
