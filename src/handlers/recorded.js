@@ -3,6 +3,7 @@ import cp from 'child_process';
 import path from 'path';
 
 const data = { };
+let stopFlag = false;
 
 data.encoded = JSON.parse(load(paths.encoded));
 data.encoding = JSON.parse(load(paths.encoding));
@@ -17,6 +18,10 @@ dispatcher.on('recording-start', () => {
 
 		log(`renice: pid = ${encoding.pid}`);
 	});
+});
+
+dispatcher.on('stop-next', () => {
+	stopFlag = true;
 });
 
 const format = (f, p) => {
@@ -64,6 +69,12 @@ const encode = () => {
 
 const recorded = (curr, prev) => {
 	data.recorded = JSON.parse(load(paths.recorded));
+
+	if (stopFlag) {
+		log('shigure has stopped')
+
+		process.exit(0);
+	}
 
 	if (!_.isEmpty(data.encoding)) {
 		return;

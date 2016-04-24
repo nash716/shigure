@@ -17,13 +17,17 @@ global.paths = {
 	recording: `${config.chinachu}/recording.json`,
 	encoded: `${__dirname}/../data/encoded.json`,
 	encoding: `${__dirname}/../data/encoding.json`,
-	log: `${__dirname}/../shigure.log`
+	log: `${__dirname}/../shigure.log`,
+	control: `${__dirname}/../shigure.control`
 };
 
 global.log = (str) => fs.appendFileSync(paths.log, `[${new Date()}] ${str}\n`);
 
 fs.watchFile(configPath, (curr, prev) => {
 	global.config = JSON.parse(load(configPath));
+});
+fs.watchFile(paths.control, (curr, prev) => {
+	dispatcher.emit('stop-next');
 });
 
 log('shigure has started.');

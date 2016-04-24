@@ -62,6 +62,14 @@ $ node lib/shigure &
 
 なお、ログファイルが `shigure/shigure.log` に出力されます。
 
+## 止める
+
+```
+touch shigure.control
+```
+
+このコマンドを実行することで、現在のエンコードタスク終了時に、次のエンコードを行わず、shigure を終了します。
+
 ## 技術的な仕様
 
 - Chinachu の `data/` 以下の JSON ファイルの更新をトリガとして処理を行います。
