@@ -66,4 +66,5 @@ $ node lib/shigure &
 	- そのため、`$ touch data/recorded.json` などとすることで、shigure は 新しいエンコード対象のファイルを探しに行きます。
 		- これは、shigure 導入前のファイルをエンコードしたいときなどに有効です。
 - Chinachu が録画を開始した際には、ffmpeg のプロセスの優先度を `renice` で下げます。録画終了時に優先度を上げるためには root 権限が必要なので、現状実装していません。
+- 付属の `libx264-hq-ts.sample.ffpreset` は[こちらのブログ](http://munepi.hatenablog.jp/entry/20091227/1261941397)を参考にして作成しました。
 - ろくにデバッグをしていないため、録画ファイルの削除などはきちんと動作の様子をみて行うのが懸命だと思います。
