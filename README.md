@@ -70,6 +70,23 @@ touch shigure.control
 
 このコマンドを実行することで、現在のエンコードタスク終了時に、次のエンコードを行わず、shigure を終了します。
 
+## アップデート
+
+shigure をアップデートするには、まず
+
+```
+$ touch shigure.control
+```
+
+を実行し、shigure が終了するのを待ちます。その後、
+
+```
+$ git pull
+$ npm run build
+```
+
+を実行することで、shigure がアップデートされます。あとは通常通り起動してください。
+
 ## 技術的な仕様
 
 - Chinachu の `data/` 以下の JSON ファイルの更新をトリガとして処理を行います。
