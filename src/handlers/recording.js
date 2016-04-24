@@ -7,7 +7,7 @@ const recording = (curr, prev) => {
 		return;
 	}
 
-	dispatcher.emit('recording');
+	dispatcher.emit('recording-start');
 };
 
 export default recording;
