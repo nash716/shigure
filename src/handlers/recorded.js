@@ -40,7 +40,8 @@ const encode = () => {
 
 		const input = path.resolve(config.chinachu, '../', encoding.chinachu.recorded);
 
-		const proc = cp.spawn(config.script, [ input, encoding.encoded ], { cwd: path.resolve(__dirname, '../../lib') });
+		const proc = cp.spawn(config.script, [ input, encoding.encoded ], { cwd: path.resolve(__dirname, '../../lib'), detached: true, stdio: [ 'ignore', 'ignore', 'ignore' ] });
+		proc.unref();
 
 		log(`encoding start: pid = ${proc.pid}, input = ${input}, output = ${encoding.encoded}`);
 
