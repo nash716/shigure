@@ -7,6 +7,18 @@ const data = { };
 data.encoded = JSON.parse(load(paths.encoded));
 data.encoding = JSON.parse(load(paths.encoding));
 
+dispatcher.on('recording-start', () => {
+	_.forEach(data.encoding, (encoding, index) => {
+		if (encoding.pid === -1) {
+			return;
+		}
+
+		cp.spawn('renice', [ 19, '-p', encoding.pid ]);
+
+		log(`renice: pid = ${encoding.pid}`);
+	});
+});
+
 const format = (f, p) => {
 	p = path.resolve(config.chinachu, '../', p);
 	const basename = path.basename(p, '.m2ts');
