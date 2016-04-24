@@ -1,7 +1,5 @@
 # shigure
 
-**WIP** :bow:
-
 Chinachu 向けエンコードマネージャ
 
 ## 注意
