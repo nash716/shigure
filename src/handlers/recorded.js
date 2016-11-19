@@ -21,6 +21,8 @@ dispatcher.on('recording-start', () => {
 });
 
 dispatcher.on('stop-next', () => {
+	log('shigure will exit after this task has been completed.');
+
 	stopFlag = true;
 });
 
@@ -72,7 +74,7 @@ const recorded = (curr, prev) => {
 	data.recorded = JSON.parse(load(paths.recorded));
 
 	if (stopFlag) {
-		log('shigure has stopped')
+		log('shigure has stopped.')
 
 		process.exit(0);
 	}
