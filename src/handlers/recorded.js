@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import cp from 'child_process';
 import path from 'path';
+import psTree from 'ps-tree';
 
 const data = { };
 let stopFlag = false;
@@ -14,9 +15,21 @@ dispatcher.on('recording-start', () => {
 			return;
 		}
 
-		cp.spawn('renice', [ 19, '-p', encoding.pid ]);
+		psTree(encoding.pid, (err, children) => {
+			if (err) {
+				log(`An error occurred while searching children of pid ${encoding.pid}`);
 
-		log(`renice: pid = ${encoding.pid}`);
+				return;
+			}
+
+			cp.spawn('renice', [ 19, '-p', encoding.pid ]);
+
+			for (const child of children) {
+				cp.spawn('renice', [ 19, '-p', child.PID ]);
+			}
+
+			log(`renice: pid = ${encoding.pid}, ${children.map(c => c.PID).join(', ')}`);
+		});
 	});
 });
 
